@@ -1,0 +1,47 @@
+<h1>Add new Publisher</h1>
+<form [formGroup]="userForm" (submit)="submitForm()" class="user-form">
+    <p><mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+  <input matInput minlength="4" maxlength="50" placeholder="Nick123"
+  formControlName="userName" required>
+  <mat-error *ngIf="userForm.get('userName')?.hasError('required')">
+      Name is <strong>required</strong>
+  </mat-error>
+  <mat-error *ngIf="userForm.get('userName')?.hasError('minlength')">
+      Name must be longer than 4 characters
+  </mat-error>
+    </mat-form-field>
+    </p>
+    <p><mat-form-field appearance="outline" id = "password">
+        <mat-label>Password</mat-label>
+        <input matInput minlength="8" [type]="hide ? 'password' : 'text'" formControlName="userPassword" required>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="userForm.get('userPassword')?.hasError('required')">
+        Password is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="userForm.get('userPassword')?.hasError('pattern') || userForm.get('userPassword')?.hasError('minlength')">
+        Password is too short, doesn't start with big letter or doesn't contain number or special character
+    </mat-error>
+    </mat-form-field>
+    </p>
+    <p><mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="www.example.com" formControlName="email">
+        <mat-error></mat-error>
+    </mat-form-field>
+    </p>
+    <p [hidden]>
+        <mat-form-field appearance="outline" >
+          <mat-label>Role</mat-label>
+          <mat-select placeholder="User Role" formControlName="role">
+            <mat-option *ngFor="let role of roles" [value]="role">
+              {{ role }}
+            </mat-option>
+          </mat-select>
+          <mat-error></mat-error>
+        </mat-form-field>
+      </p>
+    <button [disabled]="!userForm.valid" mat-flat-button color="primary" type="submit">Submit</button>
+</form>

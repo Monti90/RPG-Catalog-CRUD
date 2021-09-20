@@ -1,0 +1,20 @@
+<mat-toolbar>
+    <button color="primary" mat-raised-button (click)="addPublisherDialog()">Add Publisher</button>
+</mat-toolbar>
+<div class="games"  *ngFor="let publisher of publishers" id="publishers">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{publisher?.name}}</mat-card-title>
+            <mat-card-subtitle>{{publisher?.website}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            {{publisher?.imageUrl}}
+        </mat-card-content>
+        <mat-card-actions>
+            <button color="accent" mat-raised-button (click)="updatePublisherDialog(publisher)">Update</button>
+            <button color="warn" mat-raised-button (click)="deletePublisherDialog(publisher.id)" >Delete</button>
+        </mat-card-actions>
+    </mat-card>
+    <div>
+    </div>
+</div>

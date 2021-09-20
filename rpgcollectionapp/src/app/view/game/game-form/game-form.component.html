@@ -1,0 +1,78 @@
+<h1>Add new Game</h1>
+<div class="game-form">
+  <div class="game-form">
+    <p><mat-form-field hintLabel="Maximum 30 characters" appearance="outline">
+      <mat-label>Game Title</mat-label>
+      <input matInput #input minlength="6" maxlength="30" placeholder="Zew Cthulhu 7 Edycja"
+       [formControl]="name" required>
+      <mat-hint align="end">{{input.value?.length || 0}}/30</mat-hint>
+      <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    </p>
+  <p>  
+  <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeHolder="Fajna gra, warto zagrać" ></textarea>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Image Url</mat-label>
+      <input matInput #input minlength="6" maxlength="30" placeholder="Zew Cthulhu 7 Edycja" required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Price</mat-label>
+      <input matInput #input minlength="6" maxlength="30" placeholder="Zew Cthulhu 7 Edycja" required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Release Date</mat-label>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </p>
+  </div>
+  <div class="game-form">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Publisher</mat-label>
+      <mat-select placeholder="publisher of game">
+        <mat-option *ngFor="let publisher of publishers" [value]="publisher.name">
+          {{ publisher.name }}
+        </mat-option>
+        <mat-option [value]="'Other'">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Author</mat-label>
+      <input matInput #input minlength="6" maxlength="30" placeholder="Zew Cthulhu 7 Edycja" required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <input matInput #input minlength="6" maxlength="30" placeholder="Zew Cthulhu 7 Edycja" required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Genre</mat-label>
+      <input matInput #input minlength="6" maxlength="30" placeholder="Zew Cthulhu 7 Edycja" required>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle value="bold">Bold</mat-button-toggle>
+      <mat-button-toggle value="italic">Italic</mat-button-toggle>
+      <mat-button-toggle value="underline">Underline</mat-button-toggle>
+    </mat-button-toggle-group>
+    
+  </p>
+  </div>
+</div>

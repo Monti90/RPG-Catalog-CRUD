@@ -1,0 +1,24 @@
+
+<h1>Add new Publisher</h1>
+<form [formGroup]="publisherForm" (submit)="submitForm()" class="publisher-form">
+    <p><mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+  <input matInput minlength="4" maxlength="50" placeholder="Black Monk Games"
+  formControlName="name" required>
+  <mat-error *ngIf="publisherForm.get('name')?.hasError('required')">
+      Name is <strong>required</strong>
+  </mat-error>
+    </mat-form-field>
+    </p>
+    <p><mat-form-field appearance="outline">
+        <mat-label>Website Url</mat-label>
+        <input matInput type="url" placeholder="www.example.com" formControlName="website">
+    </mat-form-field>
+    </p>
+    <p><mat-form-field appearance="outline">
+        <mat-label>Image Url</mat-label>
+        <input matInput type="url" placeholder="www.example.com" formControlName="imageUrl">
+    </mat-form-field>
+    </p>
+    <button [disabled]="!publisherForm.valid" mat-flat-button color="primary" type="submit">Submit</button>
+</form>

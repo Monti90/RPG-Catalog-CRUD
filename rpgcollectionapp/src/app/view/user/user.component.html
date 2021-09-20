@@ -1,0 +1,22 @@
+<mat-toolbar>
+    <button color="primary" mat-raised-button (click)="addUserDialog()">Add user</button>
+</mat-toolbar>
+<div>
+<div  *ngFor="let user of users" class="games">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{user?.userName}}</mat-card-title>
+            <mat-card-subtitle class="price">{{user?.email}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions>
+            <button color="accent" mat-raised-button (click)="updateUserDialog(user)">Update</button>
+            <button color="warn" mat-raised-button (click)="deleteUserDialog(user.id)">Delete</button>
+        </mat-card-actions>
+    </mat-card>
+    <div>
+    </div>
+</div>
+<div></div>
+</div>
